@@ -1,0 +1,29 @@
+name: Python Code Standards Check
+
+on:
+  pull_request:
+    branches: [ main ]  # Adjust this if your default branch has a different name
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Specify your required Python version
+
+      - name: Install Dependencies
+        run: |
+          # Install dependencies from requirements.txt if the file exists
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+          # Install flake8 for linting
+          pip install flake8
+
+      - name: Run flake8 Lint Check
+        run: flake8 .
