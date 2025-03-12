@@ -2,11 +2,14 @@ name: Python Code Standards Check
 
 on:
   pull_request:
-    branches: [ main ]  # Adjust if your default branch has a different name
+    branches: [ main ]
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -14,15 +17,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'  # Specify your required Python version
+          python-version: '3.9'
 
       - name: Install Dependencies
         run: |
-          # Install dependencies from requirements.txt if it exists
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           fi
-          # Install flake8 and nbqa to lint both Python files and notebooks
           pip install flake8 nbqa
 
       - name: Run flake8 Lint Check on Python Files
