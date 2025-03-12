@@ -2,7 +2,7 @@ name: Python Code Standards Check
 
 on:
   pull_request:
-    branches: [ main ]  # Adjust this if your default branch has a different name
+    branches: [ main ]  # Adjust if your default branch has a different name
 
 jobs:
   lint:
@@ -18,12 +18,15 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          # Install dependencies from requirements.txt if the file exists
+          # Install dependencies from requirements.txt if it exists
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           fi
-          # Install flake8 for linting
-          pip install flake8
+          # Install flake8 and nbqa to lint both Python files and notebooks
+          pip install flake8 nbqa
 
-      - name: Run flake8 Lint Check
+      - name: Run flake8 Lint Check on Python Files
         run: flake8 .
+
+      - name: Run nbqa flake8 on Notebooks
+        run: nbqa flake8 .
