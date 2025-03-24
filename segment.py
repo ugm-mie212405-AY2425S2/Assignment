@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 
+
 def segment_blood(image_path):
     image = cv.imread(image_path)
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
@@ -30,14 +31,18 @@ def segment_blood(image_path):
         if area >= 150:
             cv.drawContours(final_mask, [contour], -1, (255), thickness=cv.FILLED)
             count += 1
-    print(f"Number of blood cell detected: {count}")
+    print(f"Number of blood cells detected: {count}")
+    
     segmented = cv.bitwise_and(image, image, mask=final_mask)
     return image, eroded2, segmented
 
+
 image_path = 'data/image.jpg'
 image, dilated2, segmented = segment_blood(image_path)
+
 cv.imshow('Original Image', image)
 cv.imshow('Dilated Image', dilated2)
 cv.imshow('Segmented Image', segmented)
 cv.waitKey(0)
 cv.destroyAllWindows()
+
