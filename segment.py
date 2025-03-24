@@ -11,29 +11,29 @@ def segment_blood(image_path):
     kernel = np.ones((2, 2), np.uint8)
     dilated = cv.dilate(edges, kernel, iterations=1)
 
-    eroded = cv.erode(dilated, kernel, iterations=1)
+    erd = cv.erode(dilated, kernel, iterations=1)
 
-    contours, _ = cv.findContours(eroded, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+    contour, _ = cv.findContours(erd, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
     mask = np.zeros_like(gray)
-    cv.drawContours(mask, contours, -1, (255), thickness=cv.FILLED)
+    cv.drawContours(mask, contour, -1, (255), thickness=cv.FILLED)
 
     kernel2 = np.ones((7, 7), np.uint8)
     eroded2 = cv.erode(mask, kernel2, iterations=1)
 
     kernel3 = np.ones((6, 6), np.uint8)
-    dilated2 = cv.dilate(eroded2, kernel3, iterations=1)
+    dlt = cv.dilate(eroded2, kernel3, iterations=1)
 
-    final_mask = np.zeros_like(dilated2)
-    contours, _ = cv.findContours(dilated2, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+    final = np.zeros_like(dlt)
+    contour, _ = cv.findContours(dlt, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
     count = 0
-    for contour in contours:
+    for contour in contour:
         area = cv.contourArea(contour)
         if area >= 150:
-            cv.drawContours(final_mask, [contour], -1, (255), thickness=cv.FILLED)
+            cv.drawContours(final, [contour], -1, (255), thickness=cv.FILLED)
             count += 1
     print(f"Number of blood cells detected: {count}")
-    
-    segmented = cv.bitwise_and(image, image, mask=final_mask)
+
+    segmented = cv.bitwise_and(image, image, mask=final)
     return image, eroded2, segmented
 
 
@@ -45,4 +45,3 @@ cv.imshow('Dilated Image', dilated2)
 cv.imshow('Segmented Image', segmented)
 cv.waitKey(0)
 cv.destroyAllWindows()
-
