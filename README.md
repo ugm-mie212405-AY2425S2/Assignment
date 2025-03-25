@@ -41,6 +41,6 @@ Untuk mengerjakan tugas, ikuti langkah-langkah berikut:
    - Tunggu hingga seluruh pemeriksaan (checks) selesai sebelum pull request Anda di-merge.
 
 7. **Selesai**  
-   - Setelah pull request diterima dan semua pemeriksaan selesai, tugas Anda dianggap selesai.
+   - Setelah pull request diterima dan semua pemeriksaan selesai, tugas Anda dianggap selesai. Langkah anda selesai sampai di Pull Request!
 
 Selamat mengerjakan!
