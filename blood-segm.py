@@ -68,7 +68,7 @@ if __name__ == "__main__":
     Images should be in standard formats (PNG/JPEG) and stored in a directory.
     """
 
-    img_path = "sample_image.png"  # Update with the actual file path
+    img_path = "sample_image.png"  # Update with your actual file path
 
     try:
         img, img_gray, img_blur = img_preproc(img_path)
