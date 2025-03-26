@@ -1,1 +1,0 @@
-Saya menggunakan "Kaggle Notebook" untuk mengerjakan tugas ini, sehingga import dataset akan berhasil apabila menggunakan notebook yang sama dengan yang saya gunakan.
