@@ -1,0 +1,21 @@
+Segmentasi Sel Darah Merah (Couting)
+
+506047 Walid Syaadan Sulthoni
+
+Menggunakan metode pengolahan gambar sederhana memanfaatkan library opencv-python,
+dataset hanya digunakan untuk manual tuning.
+
+Metode (urut)
+- Grayscale
+- Gaussian Blur
+- Tresholding (Otsu)
+- Erosi & Dilasi
+- Watershed (utk overlap)
+- Deteksi Kontur
+
+Library
+- opencv-python
+- numpy
+- scikit-image
+- matplotlib
+- scipy
