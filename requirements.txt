@@ -1,2 +1,6 @@
 numpy==1.24.3
 opencv_python==4.9.0.80
+pandas
+sklearn
+seaborn
+xgboost
