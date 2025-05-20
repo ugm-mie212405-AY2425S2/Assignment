@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-from sklearn.metrics.pairwise import cosine_similarity
 
 # (if needed)
 # import nltk
