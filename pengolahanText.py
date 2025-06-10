@@ -1,3 +1,8 @@
+# Anggota Kelompok:
+# 1. Antonius Wisang Bayu Nugraha 22/497800/PA/21451
+# 2. Adhyaksa Waruna Putro 22/504050/PA/21675
+# 3. Lutfi Wibowo 22/504413/PA/21697
+
 import requests
 import nltk
 import re
